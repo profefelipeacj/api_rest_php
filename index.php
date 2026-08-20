@@ -13,8 +13,13 @@ switch($accion){
     case 'usuarios':
         $respuesta = obtenerUsuarios();
         break;
-    case 'precio_iva':
-        $respuesta = NULL;
+    case 'auth':
+        
+        $respuesta = autenticacion();
+        break;
+    case 'login':
+        
+        $respuesta = login();
         break;
     default: // No se encuentre una función...
         $respuesta = accionNoEncontrada();

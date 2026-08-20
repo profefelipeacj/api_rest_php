@@ -8,6 +8,25 @@ function obtenerUsuarios(){
     return $matrix;
 }
 
+function autenticacion(){ // login
+    // Se reciben datos que vienen en formato JSON.
+    $input_json = json_decode(file_get_contents('php://input'));
+    $datos = [
+        "datos_input" => $input_json 
+    ];
+    return $datos;
+}
+
+function login(){
+    $usuario = $_GET['usuario'];
+    $password = $_GET['password'];
+    // Validación de acceso....
+    return [
+        "usuario" => $usuario,
+        "password" => $password
+    ];
+}
+
 function accionNoEncontrada(){
     // 404 NO ENCONTRADO.
     // 500 ERROR INTERNO DE SERVIDOR.
