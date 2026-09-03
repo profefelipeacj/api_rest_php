@@ -1,6 +1,18 @@
 <?php
+function validaSesion(){
+    session_start();
+    if(isset($_SESSION['id'])){
+        return true;
+    }
+    return false;
+}
 
 function obtenerUsuarios(){
+    if(!validaSesion()){
+        return [
+            "error" => "NO PERMITIDO"
+        ];
+    }
     $matrix = [
         ['id' => 1, 'nombre' => 'Roberto'],
         ['id' => 2, 'nombre' => 'Rafaela']
@@ -26,6 +38,14 @@ function autenticacion(){ // login
     }
     
     return $datos;
+}
+
+function cierre_sesion(){
+    session_start();
+    session_destroy();
+    return [
+        "respuesta" => "SESIÓN DESTRUIDA"
+    ];
 }
 
 function login(){

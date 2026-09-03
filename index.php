@@ -19,6 +19,9 @@ switch($accion){
     case 'login':
         $respuesta = login();
         break;
+    case 'cierre_sesion':
+        $respuesta = cierre_sesion();
+        break;
     default: // No se encuentre una función...
         $respuesta = accionNoEncontrada();
         break;
