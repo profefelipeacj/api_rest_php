@@ -14,11 +14,9 @@ switch($accion){
         $respuesta = obtenerUsuarios();
         break;
     case 'auth':
-        
         $respuesta = autenticacion();
         break;
     case 'login':
-        
         $respuesta = login();
         break;
     default: // No se encuentre una función...

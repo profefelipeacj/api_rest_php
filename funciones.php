@@ -11,9 +11,20 @@ function obtenerUsuarios(){
 function autenticacion(){ // login
     // Se reciben datos que vienen en formato JSON.
     $input_json = json_decode(file_get_contents('php://input'));
-    $datos = [
-        "datos_input" => $input_json 
-    ];
+    if($input_json->usuario == "upla" && $input_json->password == "upla123"){
+        session_start(); // Se inicia sesión en servidor
+        $_SESSION['usuario'] = $input_json->usuario; // Se guarda sesion usuario.
+        $_SESSION['id'] = rand(1, 5000); // Se guarda un id usuario.
+        $datos = [
+            "datos_input" => $input_json,
+            "usuario" => $_SESSION['usuario'],
+            "id" => $_SESSION['id']
+        ];
+    }else{
+        http_response_code(401);
+        return ["error" => "NO AUTORIZADO"];
+    }
+    
     return $datos;
 }
 
